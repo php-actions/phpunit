@@ -1,0 +1,24 @@
+name: PHPUnit (php-actions)
+description: Run your PHPUnit tests in your Github Actions.
+
+inputs:
+  config:
+    description: Configuration file location
+    required: false
+    default: test/unit/phpunit.xml
+  junit:
+    description: JUnit output file location
+    required: false
+    default: test/unit/_junit/junit.xml
+  memory:
+    description: Memory limit
+    required: false
+    default: 512M
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - -c ${{ inputs.config }}
+    - --log-junit ${{ input.junit }}
+    - -d memory_limit=${{ input.memory }}
