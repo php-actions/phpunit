@@ -25,3 +25,7 @@ runs:
     - ${{ inputs.junit }}
     - -d
     - "memory_limit=${{ inputs.memory }}"
+
+branding:
+  icon: 'check-square'
+  color: 'purple'
