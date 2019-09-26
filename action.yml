@@ -19,6 +19,9 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - -c ${{ inputs.config }}
-    - --log-junit ${{ inputs.junit }}
-    - -d memory_limit=${{ inputs.memory }}
+    - -c
+    - ${{ inputs.config }}
+    - --log-junit
+    - ${{ inputs.junit }}
+    - -d
+    - "memory_limit=${{ inputs.memory }}"
