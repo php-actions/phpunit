@@ -25,6 +25,8 @@ runs:
     - ${{ inputs.junit }}
     - -d
     - "memory_limit=${{ inputs.memory }}"
+    - --bootstrap
+    - vendor/autoload.php
 
 branding:
   icon: 'check-square'
