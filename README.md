@@ -17,7 +17,7 @@ name: CI
 on: [push]
 
 jobs:
-  build:
+  build-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -42,7 +42,7 @@ The syntax for passing in a custom input is the following:
 ...
 
 jobs:
-  build:
+  unit-tests:
 
     ...
 
