@@ -26,3 +26,14 @@ jobs:
     - uses: phpactions/phpunit@master
     # ... then your own project steps ...
 ```
+
+Inputs
+------
+
+The following configuration options are available:
+
++ `config` Path to the `phpunit.xml` file (default: `test/phpunit/phpunit.xml`)
++ `junit` Path to junut output file (default: `test/phpunit/_junit/junit.xml`)
++ `memory` The memory limit to run your tests with (default: `512M`)
+
+If you require other configurations of phpunit, please request them in the [Github issue tracker](https://github.com/php-actions/phpunit/issues)

@@ -5,11 +5,11 @@ inputs:
   config:
     description: Configuration file location
     required: false
-    default: test/unit/phpunit.xml
+    default: test/phpunit/phpunit.xml
   junit:
     description: JUnit output file location
     required: false
-    default: test/unit/_junit/junit.xml
+    default: test/phpunit/_junit/junit.xml
   memory:
     description: Memory limit
     required: false
