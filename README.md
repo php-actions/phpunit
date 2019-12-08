@@ -36,4 +36,21 @@ The following configuration options are available:
 + `junit` Path to junut output file (default: `test/phpunit/_junit/junit.xml`)
 + `memory` The memory limit to run your tests with (default: `512M`)
 
+The syntax for passing in a custom input is the following:
+
+```yaml
+...
+
+jobs:
+  build:
+
+    ...
+
+    - name: PHPUnit tests
+      uses: php-actions/phpunit@v1
+      with:
+        config: custom/path/to/phpunit.xml
+        memory: 256M
+```
+
 If you require other configurations of phpunit, please request them in the [Github issue tracker](https://github.com/php-actions/phpunit/issues)
