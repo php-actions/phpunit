@@ -30,6 +30,8 @@ runs:
     - "memory_limit=${{ inputs.memory }}"
     - --bootstrap
     - vendor/autoload.php
+    - --testsuite
+    - ${{ inputs.testsuite }}
 
 branding:
   icon: 'check-square'
