@@ -14,6 +14,10 @@ inputs:
     description: Memory limit
     required: false
     default: 512M
+  bootstrap:
+    description: Path to bootstrap file
+    required: false
+    default: vendor/autoload.php
 
 runs:
   using: 'docker'
@@ -26,7 +30,7 @@ runs:
     - -d
     - "memory_limit=${{ inputs.memory }}"
     - --bootstrap
-    - vendor/autoload.php
+    - ${{ inputs.bootstrap }}
 
 branding:
   icon: 'check-square'
