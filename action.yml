@@ -6,18 +6,25 @@ inputs:
     description: Configuration file location
     required: false
     default: test/phpunit/phpunit.xml
+    
   junit:
     description: JUnit output file location
     required: false
     default: test/phpunit/_junit/junit.xml
+    
   memory:
     description: Memory limit
     required: false
     default: 512M
+    
   bootstrap:
     description: Path to bootstrap file
     required: false
     default: vendor/autoload.php
+    
+  testsuite:
+    description: Specify a testsuite to run
+    required: false
 
 runs:
   using: 'docker'
@@ -31,6 +38,8 @@ runs:
     - "memory_limit=${{ inputs.memory }}"
     - --bootstrap
     - ${{ inputs.bootstrap }}
+    - --testsuite
+    - ${{ inputs.testsuite }}
 
 branding:
   icon: 'check-square'
