@@ -35,6 +35,7 @@ The following configuration options are available:
 + `config` Path to the `phpunit.xml` file (default: `test/phpunit/phpunit.xml`)
 + `junit` Path to junut output file (default: `test/phpunit/_junit/junit.xml`)
 + `memory` The memory limit to run your tests with (default: `512M`)
++ `bootstrap` The path to the bootstrap file (default: `vendor/autoload.php`)
 
 The syntax for passing in a custom input is the following:
 
