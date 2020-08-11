@@ -67,3 +67,7 @@ Current versions supported by this Action:
 + 8.*
 
 If you require a specific version that is not listed here, please request them in the [Github issue tracker](https://github.com/php-actions/phpunit/issues)
+
+If you found this repository helpful, consider [sponsoring the developer][sponsor].
+
+[sponsor]: https://github.com/sponsors/g105b
