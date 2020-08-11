@@ -23,7 +23,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: php-actions/composer@v1 # or alternative dependency management
-    - uses: php-actions/phpunit@v9
+    - uses: php-actions/phpunit@v8
     # ... then your own project steps ...
 ```
 
@@ -48,7 +48,7 @@ jobs:
     ...
 
     - name: PHPUnit tests
-      uses: php-actions/phpunit@v9
+      uses: php-actions/phpunit@v8
       with:
         config: custom/path/to/phpunit.xml
         memory: 256M
