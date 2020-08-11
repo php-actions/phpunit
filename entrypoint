@@ -2,7 +2,7 @@
 set -e
 PATH=/tmp/vendor/bin:$PATH
 
-command_string="phpunit $action_args"
+command_string="phpunit"
 
 if [ -n "$action_configuration" ]
 then
