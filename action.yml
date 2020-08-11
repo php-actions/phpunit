@@ -26,6 +26,10 @@ inputs:
     description: Specify a testsuite to run
     required: false
 
+  args:
+    description: Extra arguments to pass to the phpunit binary
+    required: false
+
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -40,6 +44,7 @@ runs:
     - ${{ inputs.bootstrap }}
     - --testsuite
     - ${{ inputs.testsuite }}
+    - ${{ inputs.args }}
 
 branding:
   icon: 'check-square'
