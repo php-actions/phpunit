@@ -6,11 +6,27 @@ inputs:
     description: Configuration file location
     required: false
     
-  junit:
+  log_junit:
+    description: JUnit output file location
+    required: false
+
+  log_teamcity:
+    description: JUnit output file location
+    required: false
+
+  testdox_html:
+    description: JUnit output file location
+    required: false
+
+  testdox_text:
+    description: JUnit output file location
+    required: false
+
+  testdox_xml:
     description: JUnit output file location
     required: false
     
-  memory:
+  memory_limit:
     description: Memory limit
     required: false
     
@@ -53,8 +69,10 @@ runs:
   image: 'Dockerfile'
   env:
     action_configuration: ${{ inputs.configuration }}
-    action_junit: ${{ inputs.junit }}
-    action_memory: ${{ inputs.memory }}
+    action_log_junit: ${{ inputs.log_junit }}
+    action_testdox_html: ${{ inputs.testdox_html }}
+    action_testdox_text: ${{ inputs.testdox_text }}
+    action_testdox_xml: ${{ inputs.testdox_xml }}
     action_bootstrap: ${{ inputs.bootstrap }}
     action_filter: ${{ inputs.filter }}
     action_testsuite: ${{ inputs.testsuite }}
@@ -62,6 +80,7 @@ runs:
     action_exclude_group: ${{ inputs.exclude_group }}
     action_test_suffix: ${{ inputs.test_suffix }}
     action_whitelist: ${{ inputs.whitelist }}
+    action_memory_limit: ${{ inputs.memory_limit }}
     action_args: ${{ inputs.args }}
 
 branding:
