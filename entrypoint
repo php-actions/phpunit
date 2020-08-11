@@ -75,5 +75,4 @@ then
 fi
 
 echo "Command: $command_string"
-
-#phpunit "$*"
+eval "$command_string"
