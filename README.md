@@ -55,8 +55,8 @@ jobs:
     - name: PHPUnit tests
       uses: php-actions/phpunit@v9
       with:
-        config: custom/path/to/phpunit.xml
-        memory: 256M
+        configuration: custom/path/to/phpunit.xml
+        memory_limit: 256M
 ```
 
 If you require other configurations of phpunit, please request them in the [Github issue tracker](https://github.com/php-actions/phpunit/issues)
