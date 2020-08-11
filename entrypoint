@@ -1,4 +1,17 @@
 #!/bin/bash
 set -e
 PATH=/tmp/vendor/bin:$PATH
-phpunit "$*"
+
+echo "--configuration: $action_configuration"
+echo "--junit: $action_junit"
+echo "--memory: $action_memory"
+echo "--bootstrap: $action_bootstrap"
+echo "--filter: $action_filter"
+echo "--testsuite: $action_testsuite"
+echo "--group: $action_group"
+echo "--exclude-group: $action_exclude_group"
+echo "--test-suffix: $action_test_suffix"
+echo "--whitelist: $action_whitelist"
+echo "--args: $action_args"
+
+#phpunit "$*"

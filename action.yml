@@ -2,28 +2,46 @@ name: PHPUnit (php-actions)
 description: Run your PHPUnit tests in your Github Actions.
 
 inputs:
-  config:
+  configuration:
     description: Configuration file location
     required: false
-    default: phpunit.xml
     
   junit:
     description: JUnit output file location
     required: false
-    default: junit.xml
     
   memory:
     description: Memory limit
     required: false
-    default: 512M
     
   bootstrap:
     description: Path to bootstrap file
     required: false
     default: vendor/autoload.php
-    
+
+  filter:
+    description: Filter which tests to run
+    required: false
+
   testsuite:
     description: Specify a testsuite to run
+    required: false
+
+  group:
+    description: Only runs tests from the specified group(s)
+    required: false
+
+  exclude_group:
+    description: Exclude tests from the specified group(s)
+    required: false
+
+  test_suffix:
+    description: Only search for test in files with specified suffix(es)
+    required: false
+    default: Test.php,.phpt
+
+  whitelist:
+    description: Path to directory to whitelist for code coverage analysis
     required: false
 
   args:
@@ -33,18 +51,18 @@ inputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - -c
-    - ${{ inputs.config }}
-    - --log-junit
-    - ${{ inputs.junit }}
-    - -d
-    - "memory_limit=${{ inputs.memory }}"
-    - --bootstrap
-    - ${{ inputs.bootstrap }}
-    - --testsuite
-    - ${{ inputs.testsuite }}
-    - ${{ inputs.args }}
+  env:
+    action_configuration: ${{ inputs.configuration }}
+    action_junit: ${{ inputs.junit }}
+    action_memory: ${{ inputs.memory }}
+    action_bootstrap: ${{ inputs.bootstrap }}
+    action_filter: ${{ inputs.filter }}
+    action_testsuite: ${{ inputs.testsuite }}
+    action_group: ${{ inputs.group }}
+    action_exclude_group: ${{ inputs.exclude_group }}
+    action_test_suffix: ${{ inputs.test_suffix }}
+    action_whitelist: ${{ inputs.whitelist }}
+    action_args: ${{ inputs.args }}
 
 branding:
   icon: 'check-square'
