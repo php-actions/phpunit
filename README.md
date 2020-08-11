@@ -23,9 +23,14 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: php-actions/composer@v1 # or alternative dependency management
-    - uses: php-actions/phpunit@v8
+    - uses: php-actions/phpunit@v9
     # ... then your own project steps ...
 ```
+
+Example
+-------
+
+We've put together an extremely simple example application that uses `php-actions/phpunit`. Check it out here: https://github.com/php-actions/example-phpunit.
 
 Inputs
 ------
@@ -48,7 +53,7 @@ jobs:
     ...
 
     - name: PHPUnit tests
-      uses: php-actions/phpunit@v8
+      uses: php-actions/phpunit@v9
       with:
         config: custom/path/to/phpunit.xml
         memory: 256M
@@ -65,6 +70,8 @@ Current versions supported by this Action:
 
 + 9.*
 + 8.*
+
+Please note **the version number of the Github Action must match your composer.json major version number**. For example, if your composer.json requires `phpunit/phpunit 8.5.8`, you must use `php-actions/phpunit@v8`, as major versions of PHPUnit are incompatible with each other.  
 
 If you require a specific version that is not listed here, please request them in the [Github issue tracker](https://github.com/php-actions/phpunit/issues)
 
