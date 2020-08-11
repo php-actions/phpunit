@@ -2,44 +2,86 @@ name: PHPUnit (php-actions)
 description: Run your PHPUnit tests in your Github Actions.
 
 inputs:
-  config:
+  configuration:
     description: Configuration file location
     required: false
-    default: phpunit.xml
     
-  junit:
+  log_junit:
     description: JUnit output file location
     required: false
-    default: junit.xml
+
+  log_teamcity:
+    description: JUnit output file location
+    required: false
+
+  testdox_html:
+    description: JUnit output file location
+    required: false
+
+  testdox_text:
+    description: JUnit output file location
+    required: false
+
+  testdox_xml:
+    description: JUnit output file location
+    required: false
     
-  memory:
+  memory_limit:
     description: Memory limit
     required: false
-    default: 512M
     
   bootstrap:
     description: Path to bootstrap file
     required: false
     default: vendor/autoload.php
-    
+
+  filter:
+    description: Filter which tests to run
+    required: false
+
   testsuite:
     description: Specify a testsuite to run
+    required: false
+
+  group:
+    description: Only runs tests from the specified group(s)
+    required: false
+
+  exclude_group:
+    description: Exclude tests from the specified group(s)
+    required: false
+
+  test_suffix:
+    description: Only search for test in files with specified suffix(es)
+    required: false
+    default: Test.php,.phpt
+
+  whitelist:
+    description: Path to directory to whitelist for code coverage analysis
+    required: false
+
+  args:
+    description: Extra arguments to pass to the phpunit binary
     required: false
 
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - -c
-    - ${{ inputs.config }}
-    - --log-junit
-    - ${{ inputs.junit }}
-    - -d
-    - "memory_limit=${{ inputs.memory }}"
-    - --bootstrap
-    - ${{ inputs.bootstrap }}
-    - --testsuite
-    - ${{ inputs.testsuite }}
+  env:
+    action_configuration: ${{ inputs.configuration }}
+    action_log_junit: ${{ inputs.log_junit }}
+    action_testdox_html: ${{ inputs.testdox_html }}
+    action_testdox_text: ${{ inputs.testdox_text }}
+    action_testdox_xml: ${{ inputs.testdox_xml }}
+    action_bootstrap: ${{ inputs.bootstrap }}
+    action_filter: ${{ inputs.filter }}
+    action_testsuite: ${{ inputs.testsuite }}
+    action_group: ${{ inputs.group }}
+    action_exclude_group: ${{ inputs.exclude_group }}
+    action_test_suffix: ${{ inputs.test_suffix }}
+    action_whitelist: ${{ inputs.whitelist }}
+    action_memory_limit: ${{ inputs.memory_limit }}
+    action_args: ${{ inputs.args }}
 
 branding:
   icon: 'check-square'

@@ -21,9 +21,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - uses: php-actions/composer@v1 # or alternative dependency management
-    - uses: php-actions/phpunit@v1
+    - uses: php-actions/phpunit@v8
     # ... then your own project steps ...
 ```
 
@@ -48,10 +48,26 @@ jobs:
     ...
 
     - name: PHPUnit tests
-      uses: php-actions/phpunit@v1
+      uses: php-actions/phpunit@v8
       with:
         config: custom/path/to/phpunit.xml
         memory: 256M
 ```
 
 If you require other configurations of phpunit, please request them in the [Github issue tracker](https://github.com/php-actions/phpunit/issues)
+
+Versions
+--------
+
+The Github Actions version numbers are in sync with the PHPUnit version. This allows you to specify which version of PHPUnit your project should run by using the @ syntax.
+
+Current versions supported by this Action:
+
++ 9.*
++ 8.*
+
+If you require a specific version that is not listed here, please request them in the [Github issue tracker](https://github.com/php-actions/phpunit/issues)
+
+If you found this repository helpful, please consider [sponsoring the developer][sponsor].
+
+[sponsor]: https://github.com/sponsors/g105b
