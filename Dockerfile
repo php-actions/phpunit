@@ -5,6 +5,6 @@ LABEL repository="https://github.com/php-actions/phpunit"
 LABEL homepage="https://github.com/php-actions/phpunit"
 LABEL maintainer="Greg Bowler <greg.bowler@g105b.com>"
 
-RUN composer global require --no-progress phpunit/phpunit 5.*
+RUN composer global require --no-progress phpunit/phpunit 6.*
 COPY entrypoint /usr/local/bin/entrypoint
 ENTRYPOINT ["/usr/local/bin/entrypoint"]
