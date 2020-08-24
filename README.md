@@ -6,7 +6,7 @@ Run your PHPUnit tests in your Github Actions.
 PHPUnit is a programmer-oriented testing framework for PHP.
 It is an instance of the xUnit architecture for unit testing frameworks.
 
-**Please note that PHPUnit v5 is no longer supported, and neither is PHP v5.*! Please upgrade to a newer version (see https://phpunit.de/getting-started/phpunit-5.html)**
+**Please note that PHPUnit v6 is no longer supported, and neither is PHP v7.0! Please upgrade to a newer version (see https://phpunit.de/getting-started/phpunit-5.html)**
 
 Usage
 -----
@@ -25,7 +25,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: php-actions/composer@v1 # or alternative dependency management
-    - uses: php-actions/phpunit@v5
+    - uses: php-actions/phpunit@v6
     # ... then your own project steps ...
 ```
 
@@ -55,7 +55,7 @@ jobs:
     ...
 
     - name: PHPUnit tests
-      uses: php-actions/phpunit@v5
+      uses: php-actions/phpunit@v6
       with:
         configuration: custom/path/to/phpunit.xml
         memory_limit: 256M
