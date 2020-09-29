@@ -2,6 +2,10 @@ name: PHPUnit (php-actions)
 description: Run your PHPUnit tests in your Github Actions.
 
 inputs:
+  php_version:
+    description: What version of PHP to use
+    required: false
+
   configuration:
     description: Configuration file location
     required: false
@@ -68,6 +72,7 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   env:
+    action_php_version: ${{ inputs.php_version }}
     action_configuration: ${{ inputs.configuration }}
     action_log_junit: ${{ inputs.log_junit }}
     action_testdox_html: ${{ inputs.testdox_html }}
