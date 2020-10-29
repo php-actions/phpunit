@@ -1,4 +1,4 @@
-FROM g105b:fbaf5fee35254ca056ec13828d7ce9b9361ee4ba@docker.pkg.github.com/php-actions/php-build/php-build:latest
+FROM ghcr.io/php-actions/php-build:latest
 
 LABEL version="1.0.0"
 LABEL repository="https://github.com/php-actions/phpunit"
