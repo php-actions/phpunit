@@ -5,7 +5,7 @@ LABEL repository="https://github.com/php-actions/phpunit"
 LABEL homepage="https://github.com/php-actions/phpunit"
 LABEL maintainer="Greg Bowler <greg.bowler@g105b.com>"
 
-RUN apt-get update && apt-get install -y composer
-RUN composer global require --no-progress phpunit/phpunit 9.*
+RUN curl https://raw.githubusercontent.com/composer/getcomposer.org/master/web/installer | php -- --quiet
+RUN ./composer.phar global require --no-progress phpunit/phpunit 9.*
 COPY entrypoint /usr/local/bin/entrypoint
 ENTRYPOINT ["/usr/local/bin/entrypoint"]
