@@ -43,7 +43,6 @@ inputs:
   bootstrap:
     description: Path to bootstrap file
     required: false
-    default: vendor/autoload.php
 
   filter:
     description: Filter which tests to run
