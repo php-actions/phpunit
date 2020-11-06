@@ -5,7 +5,8 @@ LABEL repository="https://github.com/php-actions/phpunit"
 LABEL homepage="https://github.com/php-actions/phpunit"
 LABEL maintainer="Greg Bowler <greg.bowler@g105b.com>"
 
-RUN curl https://raw.githubusercontent.com/composer/getcomposer.org/master/web/installer | php -- --quiet
-RUN ./composer.phar global require --no-progress phpunit/phpunit 9.*
+RUN curl https://phar.phpunit.de/phpunit-9.4.2.phar > phpunit-9.phar
+RUN chmod +x *.phar
+RUN ln -s $(pwd)/phpunit-9.phar /usr/local/bin/phpunit
 COPY entrypoint /usr/local/bin/entrypoint
 ENTRYPOINT ["/usr/local/bin/entrypoint"]
