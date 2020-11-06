@@ -1,0 +1,10 @@
+#!/bin/bash
+if [ "$1" = "latest" ]
+then
+	version=9
+else
+	version=$1
+fi
+
+rm -f /usr/local/bin/phpunit
+ln -s "/usr/local/bin/phpunit-$version" "/usr/local/bin/phpunit"

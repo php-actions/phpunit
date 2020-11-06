@@ -8,6 +8,12 @@ then
 	switch-php-version $action_php_version
 fi
 
+if [ -n "$action_phpunit_version" ]
+then
+	echo "Using PHPUnit version: $action_phpunit_version"
+	switch-phpunit-version $action_phpunit_version
+fi
+
 command_string="phpunit"
 
 if [ -n "$action_configuration" ]
