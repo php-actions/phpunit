@@ -24,7 +24,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: php-actions/composer@v1 # or alternative dependency management
-    - uses: php-actions/phpunit@v9
+    - uses: php-actions/phpunit@v1
     # ... then your own project steps ...
 ```
 
@@ -42,6 +42,8 @@ The following configuration options are available:
 + `junit` Path to junit output file (default: `test/phpunit/_junit/junit.xml`)
 + `memory` The memory limit to run your tests with (default: `512M`)
 + `bootstrap` The path to the bootstrap file (default: `vendor/autoload.php`)
++ `php_version` The version of PHP to use e.g. `7.4` (default: latest)
++ `phpunit_version` The version of PHPUnit to use e.g. `9` or `9.4.2` (default: latest)
 
 The syntax for passing in a custom input is the following:
 
@@ -54,7 +56,7 @@ jobs:
     ...
 
     - name: PHPUnit tests
-      uses: php-actions/phpunit@v9
+      uses: php-actions/phpunit@v1
       with:
         configuration: custom/path/to/phpunit.xml
         memory_limit: 256M
@@ -65,16 +67,13 @@ If you require other configurations of phpunit, please request them in the [Gith
 Versions
 --------
 
-The Github Actions version numbers are in sync with the PHPUnit version. This allows you to specify which version of PHPUnit your project should run by using the @ syntax.
+Previously, the Github Actions release version numbers were in sync with the PHPUnit version, but this imposed too many limitations. For the next 12 months, v7, v8 and v9 branches will still point to their existing commits, but we have reverted to v1-based Actions releases, allowing PHPUnit version number to be specified from your configuration, using the `phpunit_version` input variable.
 
-Current versions supported by this Action:
+Any PHPUnit version available from https://phar.phpunit.de/ are supported.
 
-+ 9.*
-+ 8.*
+Please note the version number specified within your Action configuration must match your composer.json major version number. For example, if your composer.json requires `phpunit/phpunit 8.5.8`, you must use `phpunit_version: 8.5.8`, as major versions of PHPUnit are incompatible with each other.  
 
-Please note **the version number of the Github Action must match your composer.json major version number**. For example, if your composer.json requires `phpunit/phpunit 8.5.8`, you must use `php-actions/phpunit@v8`, as major versions of PHPUnit are incompatible with each other.  
-
-If you require a specific version that is not listed here, please request them in the [Github issue tracker](https://github.com/php-actions/phpunit/issues)
+If you require a specific version that is not compatible with Github Actions for some reason, please make a request in the [Github issue tracker](https://github.com/php-actions/phpunit/issues).
 
 If you found this repository helpful, please consider [sponsoring the developer][sponsor].
 
