@@ -1,4 +1,4 @@
-FROM ghcr.io/php-actions/php-build:latest
+FROM ghcr.io/php-actions/php-build:v1
 
 LABEL version="1.0.0"
 LABEL repository="https://github.com/php-actions/phpunit"
