@@ -78,6 +78,7 @@ runs:
   image: 'Dockerfile'
   env:
     action_php_version: ${{ inputs.php_version }}
+    action_phpunit_version: ${{ inputs.phpunit_version }}
     action_configuration: ${{ inputs.configuration }}
     action_log_junit: ${{ inputs.log_junit }}
     action_testdox_html: ${{ inputs.testdox_html }}
