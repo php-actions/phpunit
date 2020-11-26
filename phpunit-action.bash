@@ -1,17 +1,13 @@
 #!/bin/bash
 set -e
-PATH=/tmp/vendor/bin:$PATH
+printenv
+echo "current script: $0"
+exit
 
-if [ -n "$action_php_version" ]
+if [ -n "$ACTION_PHPUNIT_VERSION" ]
 then
-	echo "Using PHP version: $action_php_version"
-	switch-php-version $action_php_version
-fi
+	echo "Using PHPUnit version: $ACTION_PHPUNIT_VERSION"
 
-if [ -n "$action_phpunit_version" ]
-then
-	echo "Using PHPUnit version: $action_phpunit_version"
-	switch-phpunit-version $action_phpunit_version
 fi
 
 command_string="phpunit"
