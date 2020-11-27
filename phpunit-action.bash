@@ -92,13 +92,8 @@ fi
 
 echo "Command: $command_string"
 
-echo "Current directory:"
-ls -la
-echo "Github workspace:"
-ls -la "${GITHUB_WORKSPACE}"
-
 docker run --rm \
 	--volume ${github_action_path}/phpunit.phar:/usr/local/bin/phpunit \
 	--volume ${GITHUB_WORKSPACE}:/app \
 	--workdir /app \
-	php:latest pwd && ls -la
+	$command_string
