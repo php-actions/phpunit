@@ -4,6 +4,17 @@ github_action_path=$(dirname "$0")
 docker_tag=$(cat ./docker_tag)
 echo "Docker tag: $docker_tag"
 
+phar_url="https://phar.phpunit.de/phpunit"
+if [ "$ACTION_VERSION" == "latest" ]
+then
+	phar_url="${phar_url}.phar"
+else
+	phar_url="${phar_url}-${ACTION_VERSION}.phar"
+fi
+
+curl -H "User-agent: cURL (https://github.com/php-actions)" -L "$phar_url" > "${github_action_path}/phpunit.phar"
+chmod +x "${github_action_path}/phpunit.phar"
+
 command_string="phpunit"
 
 if [ -n "$ACTION_CONFIGURATION" ]
