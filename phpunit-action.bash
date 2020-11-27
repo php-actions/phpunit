@@ -92,7 +92,7 @@ fi
 echo "Command: $command_string"
 
 docker run --rm \
-	--volume "${github_action_path}/phpunit.phar":/usr/local/bin/phpunit.phar \
+	--volume "${github_action_path}/phpunit.phar":/usr/local/bin/phpunit \
 	--volume "${GITHUB_WORKSPACE}":/app \
 	--workdir /app \
 	${command_string}
