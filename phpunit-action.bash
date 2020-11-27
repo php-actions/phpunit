@@ -93,6 +93,7 @@ fi
 echo "Command: $command_string"
 
 echo "The path is: ${github_action_path}/phpunit.phar"
+ls -la "${github_action_path}/phpunit.phar"
 
 docker run --rm \
 	--volume "${github_action_path}/phpunit.phar":/usr/local/bin/phpunit \
