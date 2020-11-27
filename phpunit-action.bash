@@ -5,7 +5,7 @@ set -e
 #exit
 github_action_path=$(dirname "$0")
 phar_filename="phpunit.phar"
-command_string="php:$ACTION_PHP_VERSION "
+command_string="php:$ACTION_PHP_VERSION phpunit"
 
 if [ -n "$ACTION_PHPUNIT_VERSION" ]
 then
@@ -19,74 +19,74 @@ fi
 
 curl -H "User-agent: cURL (https://github.com/php-actions/phpunit)" -L https://phar.phpunit.de/"$phar_filename" > phpunit.phar
 
-if [ -n "$action_configuration" ]
+if [ -n "$ACTION_CONFIGURATION" ]
 then
-	command_string="$command_string --configuration '$action_configuration'"
+	command_string="$command_string --configuration '$ACTION_CONFIGURATION'"
 fi
 
-if [ -n "$action_log_junit" ]
+if [ -n "$ACTION_LOG_JUNIT" ]
 then
-	command_string="$command_string --log-junit '$action_log_junit'"
+	command_string="$command_string --log-junit '$ACTION_LOG_JUNIT'"
 fi
 
-if [ -n "$action_testdox_html" ]
+if [ -n "$ACTION_TESTDOX_HTML" ]
 then
-	command_string="$command_string --testdox-html '$action_testdox_html'"
+	command_string="$command_string --testdox-html '$ACTION_TESTDOX_HTML'"
 fi
 
-if [ -n "$action_testdox_text" ]
+if [ -n "$ACTION_TESTDOX_TEXT" ]
 then
-	command_string="$command_string --testdox-text '$action_testdox_text'"
+	command_string="$command_string --testdox-text '$ACTION_TESTDOX_TEXT'"
 fi
 
-if [ -n "$action_testdox_xml" ]
+if [ -n "$ACTION_TESTDOX_XML" ]
 then
-	command_string="$command_string --testdox-xml '$action_testdox_xml'"
+	command_string="$command_string --testdox-xml '$ACTION_TESTDOX_XML'"
 fi
 
-if [ -n "$action_bootstrap" ]
+if [ -n "$ACTION_BOOTSTRAP" ]
 then
-	command_string="$command_string --bootstrap '$action_bootstrap'"
+	command_string="$command_string --bootstrap '$ACTION_BOOTSTRAP'"
 fi
 
-if [ -n "$action_filter" ]
+if [ -n "$ACTION_FILTER" ]
 then
-	command_string="$command_string --filter '$action_filter'"
+	command_string="$command_string --filter '$ACTION_FILTER'"
 fi
 
-if [ -n "$action_testsuite" ]
+if [ -n "$ACTION_TESTSUITE" ]
 then
-	command_string="$command_string --testsuite '$action_testsuite'"
+	command_string="$command_string --testsuite '$ACTION_TESTSUITE'"
 fi
 
-if [ -n "$action_group" ]
+if [ -n "$ACTION_GROUP" ]
 then
-	command_string="$command_string --group '$action_group'"
+	command_string="$command_string --group '$ACTION_GROUP'"
 fi
 
-if [ -n "$action_exclude_group" ]
+if [ -n "$ACTION_EXCLUDE_GROUP" ]
 then
-	command_string="$command_string --exclude-group '$action_exclude_group'"
+	command_string="$command_string --exclude-group '$ACTION_EXCLUDE_GROUP'"
 fi
 
-if [ -n "$action_test_suffix" ]
+if [ -n "$ACTION_TEST_SUFFIX" ]
 then
-	command_string="$command_string --test-suffix '$action_test_suffix'"
+	command_string="$command_string --test-suffix '$ACTION_TEST_SUFFIX'"
 fi
 
-if [ -n "$action_whitelist" ]
+if [ -n "$ACTION_WHITELIST" ]
 then
-	command_string="$command_string --whitelist '$action_whitelist'"
+	command_string="$command_string --whitelist '$ACTION_WHITELIST'"
 fi
 
-if [ -n "$action_memory_limit" ]
+if [ -n "$ACTION_MEMORY_LIMIT" ]
 then
-	command_string="$command_string -d memory_limit=$action_memory_limit"
+	command_string="$command_string -d memory_limit=$ACTION_MEMORY_LIMIT"
 fi
 
-if [ -n "$action_args" ]
+if [ -n "$ACTION_ARGS" ]
 then
-	command_string="$command_string $action_args"
+	command_string="$command_string $ACTION_ARGS"
 fi
 
 echo "Command: $command_string"
