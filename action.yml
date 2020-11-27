@@ -7,6 +7,10 @@ inputs:
     default: latest
     required: false
 
+  php_extensions:
+    description: List of extensions to configure with the PHP build
+    required: false
+
   phpunit_version:
     description: What version of PHPUnit to use
     default: latest
@@ -91,6 +95,7 @@ runs:
   steps:
     - env:
         ACTION_PHP_VERSION: ${{ inputs.phpunit_version }}
+        ACTION_PHP_EXTENSIONS: ${{ inputs.php_extensions }}
         ACTION_PHPUNIT_VERSION: ${{ inputs.phpunit_version }}
         ACTION_CONFIGURATION: ${{ inputs.configuration }}
         ACTION_LOG_JUNIT: ${{ inputs.log_junit }}

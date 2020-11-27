@@ -5,10 +5,9 @@ set -e
 #exit
 github_action_path=$(dirname "$0")
 phar_filename="phpunit.phar"
-command_string="php:$ACTION_PHP_VERSION"
 
-docker pull -q $command_string
-command_string="$command_string phpunit"
+docker pull -q "php:$ACTION_PHP_VERSION"
+command_string="phpunit"
 
 if [ -n "$ACTION_PHPUNIT_VERSION" ]
 then
@@ -19,6 +18,18 @@ then
 		phar_filename="phpunit-$ACTION_PHPUNIT_VERSION.phar"
 	fi
 fi
+
+echo "Passed extensions: $ACTION_PHP_EXTENSIONS"
+echo "looping..."
+for ext in $ACTION_PHP_EXTENSIONS
+do
+	echo "Found $ext..."
+done
+
+
+dockerfile="FROM php:$ACTION_PHP_VERSION"
+echo "$dockerfile" | docker build -
+exit
 
 curl -H "User-agent: cURL (https://github.com/php-actions/phpunit)" -L https://phar.phpunit.de/"$phar_filename" > "${github_action_path}/phpunit.phar"
 chmod +x "${github_action_path}/phpunit.phar"
@@ -99,4 +110,4 @@ docker run --rm \
 	--volume ${github_action_path}/phpunit.phar:/usr/local/bin/phpunit \
 	--volume ${GITHUB_WORKSPACE}:/app \
 	--workdir /app \
-	$command_string
+	$docker_id $command_string
