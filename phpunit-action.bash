@@ -18,6 +18,7 @@ then
 fi
 
 curl -H "User-agent: cURL (https://github.com/php-actions/phpunit)" -L https://phar.phpunit.de/"$phar_filename" > phpunit.phar
+chmod +x phpunit.phar
 
 if [ -n "$ACTION_CONFIGURATION" ]
 then
