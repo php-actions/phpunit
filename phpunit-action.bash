@@ -5,6 +5,7 @@ set -e
 #exit
 github_action_path=$(dirname "$0")
 phar_filename="phpunit.phar"
+command_string="php:$ACTION_PHP_VERSION "
 
 if [ -n "$ACTION_PHPUNIT_VERSION" ]
 then
@@ -17,9 +18,6 @@ then
 fi
 
 curl -H "User-agent: cURL (https://github.com/php-actions/phpunit)" -L https://phar.phpunit.de/"$phar_filename" > phpunit.phar
-mv phpunit.phar /usr/local/bin/phpunit
-
-command_string="phpunit"
 
 if [ -n "$action_configuration" ]
 then
@@ -93,3 +91,9 @@ fi
 
 echo "Command: $command_string"
 eval "$command_string"
+
+docker run --rm \
+	--volume "${github_action_path}/phpunit.phar":/usr/local/bin/phpunit.phar \
+	--volume "${GITHUB_WORKSPACE}":/app \
+	--workdir /app \
+	${command_string}
