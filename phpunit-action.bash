@@ -5,7 +5,10 @@ set -e
 #exit
 github_action_path=$(dirname "$0")
 phar_filename="phpunit.phar"
-command_string="php:$ACTION_PHP_VERSION phpunit"
+command_string="php:$ACTION_PHP_VERSION"
+
+docker pull -q $command_string
+command_string="$command_string phpunit"
 
 if [ -n "$ACTION_PHPUNIT_VERSION" ]
 then
