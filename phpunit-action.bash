@@ -4,6 +4,8 @@ github_action_path=$(dirname "$0")
 docker_tag=$(cat ./docker_tag)
 echo "Docker tag: $docker_tag"
 
+command_string="phpunit"
+
 if [ -n "$ACTION_CONFIGURATION" ]
 then
 	command_string="$command_string --configuration $ACTION_CONFIGURATION"
