@@ -1,14 +1,23 @@
 #!/bin/bash
 set -e
-printenv
-echo "current script: $0"
-exit
+#printenv
+#echo "current script: $0"
+#exit
+github_action_path=$(dirname "$0")
+phar_filename="phpunit.phar"
 
 if [ -n "$ACTION_PHPUNIT_VERSION" ]
 then
 	echo "Using PHPUnit version: $ACTION_PHPUNIT_VERSION"
 
+	if [ "$ACTION_PHPUNIT_VERSION" != "latest" ]
+	then
+		phar_filename="phpunit-$ACTION_PHPUNIT_VERSION.phar"
+	fi
 fi
+
+curl -H "User-agent: cURL (https://github.com/php-actions/phpunit)" -L https://phar.phpunit.de/"$phar_filename" > phpunit.phar
+mv phpunit.phar /usr/local/bin/phpunit
 
 command_string="phpunit"
 
