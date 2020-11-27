@@ -101,4 +101,4 @@ docker run --rm \
 	--volume ${github_action_path}/phpunit.phar:/usr/local/bin/phpunit \
 	--volume ${GITHUB_WORKSPACE}:/app \
 	--workdir /app \
-	pwd && ls -la
+	php:latest pwd && ls -la
