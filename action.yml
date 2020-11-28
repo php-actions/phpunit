@@ -112,7 +112,7 @@ runs:
         ACTION_MEMORY_LIMIT: ${{ inputs.memory_limit }}
         ACTION_ARGS: ${{ inputs.args }}
       id: phpunit_run
-      run: ${{ github.action_path }}/phpunit-action.bash \
+      run: ${{ github.action_path }}/setup-php.bash \
         && ${{ github.action_path }}/phpunit-action.bash
       shell: bash
 
