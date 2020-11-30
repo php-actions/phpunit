@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+echo docker pull -q "php:$ACTION_PHP_VERSION"
 docker pull -q "php:$ACTION_PHP_VERSION"
 dockerfile="FROM php:$ACTION_PHP_VERSION"
 
@@ -15,6 +16,8 @@ for ext in $ACTION_PHP_EXTENSIONS
 do
 	dockerfile="${dockerfile} $ext"
 done
+
+echo "$dockerfile"
 
 # Tag the Docker build with a name that identifies the combination of extensions
 # so that each combination only needs to be built once.
