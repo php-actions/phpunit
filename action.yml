@@ -95,7 +95,7 @@ runs:
   steps:
     - env:
         ACTION_VERSION: ${{ inputs.version }}
-        ACTION_PHP_VERSION: ${{ inputs.phpunit_version }}
+        ACTION_PHP_VERSION: ${{ inputs.php_version }}
         ACTION_PHP_EXTENSIONS: ${{ inputs.php_extensions }}
         ACTION_CONFIGURATION: ${{ inputs.configuration }}
         ACTION_LOG_JUNIT: ${{ inputs.log_junit }}
