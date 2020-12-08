@@ -5,10 +5,10 @@ LABEL repository="https://github.com/php-actions/phpunit"
 LABEL homepage="https://github.com/php-actions/phpunit"
 LABEL maintainer="Greg Bowler <greg.bowler@g105b.com>"
 
-RUN curl https://phar.phpunit.de/phpunit-9.4.2.phar > phpunit-9.phar
-RUN curl https://phar.phpunit.de/phpunit-8.5.8.phar > phpunit-8.phar
-RUN curl https://phar.phpunit.de/phpunit-7.5.9.phar > phpunit-7.phar
-RUN curl https://phar.phpunit.de/phpunit-6.5.9.phar > phpunit-6.phar
+RUN curl https://phar.phpunit.de/phpunit-9.phar > phpunit-9.phar
+RUN curl https://phar.phpunit.de/phpunit-8.phar > phpunit-8.phar
+RUN curl https://phar.phpunit.de/phpunit-7.phar > phpunit-7.phar
+RUN curl https://phar.phpunit.de/phpunit-6.phar > phpunit-6.phar
 RUN chmod +x *.phar
 RUN ln -s $(pwd)/phpunit-9.phar /usr/local/bin/phpunit-9
 RUN ln -s $(pwd)/phpunit-8.phar /usr/local/bin/phpunit-8

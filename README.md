@@ -43,7 +43,7 @@ The following configuration options are available:
 + `memory` The memory limit to run your tests with (default: `512M`)
 + `bootstrap` The path to the bootstrap file (default: `vendor/autoload.php`)
 + `php_version` The version of PHP to use e.g. `7.4` (default: latest)
-+ `phpunit_version` The version of PHPUnit to use e.g. `9` or `9.4.2` (default: latest)
++ `phpunit_version` The version of PHPUnit to use e.g. `9` or `9.5.0` (default: latest)
 
 The syntax for passing in a custom input is the following:
 
