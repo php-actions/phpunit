@@ -39,8 +39,8 @@ Inputs
 The following configuration options are available:
 
 + `configuration` Path to the `phpunit.xml` file (default: `test/phpunit/phpunit.xml`)
-+ `junit` Path to junit output file (default: `test/phpunit/_junit/junit.xml`)
-+ `memory` The memory limit to run your tests with (default: `512M`)
++ `log_junit` Path to junit output file (default: `test/phpunit/_junit/junit.xml`)
++ `memory_limit` The memory limit to run your tests with (default: `512M`)
 + `bootstrap` The path to the bootstrap file (default: `vendor/autoload.php`)
 + `php_version` The version of PHP to use e.g. `7.4` (default: latest)
 + `phpunit_version` The version of PHPUnit to use e.g. `9` or `9.5.0` (default: latest)
