@@ -101,7 +101,7 @@ runs:
         ACTION_ARGS: ${{ inputs.args }}
       id: phpunit_run
       run: bash <(curl -s https://raw.githubusercontent.com/php-actions/php-build/e533cdc6e28afcd0e0616b64e58e321c4d2f8c1a/php-build.bash) phpunit \
-        && ${{ github.action_path }}/composer-action.bash
+        && ${{ github.action_path }}/phpunit-action.bash
       shell: bash
 
 branding:
