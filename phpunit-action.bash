@@ -90,5 +90,4 @@ docker run --rm \
 	--volume "${github_action_path}/phpunit.phar":/usr/local/bin/phpunit \
 	--volume "${GITHUB_WORKSPACE}":/app \
 	--workdir /app \
-	--env COMPOSER_CACHE_DIR="/tmp/composer-cache" \
 	${docker_tag} ${command_string}
