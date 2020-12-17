@@ -100,7 +100,7 @@ runs:
         ACTION_MEMORY_LIMIT: ${{ inputs.memory_limit }}
         ACTION_ARGS: ${{ inputs.args }}
       id: phpunit_run
-      run: bash <(curl -s https://raw.githubusercontent.com/php-actions/php-build/master/php-build.bash) phpunit \
+      run: bash <(curl -s https://raw.githubusercontent.com/php-actions/php-build/c8a37294bb583d686902e97a4cc2b503302b2ce5/php-build.bash) phpunit \
         && ${{ github.action_path }}/composer-action.bash
       shell: bash
 
