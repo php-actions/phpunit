@@ -80,7 +80,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-      - env:
+    - env:
         ACTION_VERSION: ${{ inputs.version }}
         ACTION_PHP_VERSION: ${{ inputs.php_version }}
         ACTION_PHP_EXTENSIONS: ${{ inputs.php_extensions }}
@@ -99,9 +99,9 @@ runs:
         ACTION_MEMORY_LIMIT: ${{ inputs.memory_limit }}
         ACTION_ARGS: ${{ inputs.args }}
       id: phpunit_run
-        run: bash <(curl -s https://raw.githubusercontent.com/php-actions/php-build/master/php-build.bash) phpunit \
-          && ${{ github.action_path }}/composer-action.bash
-        shell: bash
+      run: bash <(curl -s https://raw.githubusercontent.com/php-actions/php-build/master/php-build.bash) phpunit \
+        && ${{ github.action_path }}/composer-action.bash
+      shell: bash
 
 branding:
   icon: 'check-square'
