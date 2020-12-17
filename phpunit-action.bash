@@ -17,7 +17,7 @@ command_string="phpunit"
 
 if [ -n "$ACTION_CONFIGURATION" ]
 then
-	command_string="$command_string --configuration '$ACTION_CONFIGURATION'"
+	command_string="$command_string --configuration $ACTION_CONFIGURATION"
 fi
 
 if [ -n "$ACTION_LOG_JUNIT" ]
@@ -42,7 +42,7 @@ fi
 
 if [ -n "$ACTION_BOOTSTRAP" ]
 then
-	command_string="$command_string --bootstrap '$ACTION_BOOTSTRAP'"
+	command_string="$command_string --bootstrap $ACTION_BOOTSTRAP"
 fi
 
 if [ -n "$ACTION_FILTER" ]
