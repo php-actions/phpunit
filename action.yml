@@ -80,28 +80,28 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - env:
-      ACTION_VERSION: ${{ inputs.version }}
-      ACTION_PHP_VERSION: ${{ inputs.php_version }}
-      ACTION_PHP_EXTENSIONS: ${{ inputs.php_extensions }}
-      ACTION_CONFIGURATION: ${{ inputs.configuration }}
-      ACTION_LOG_JUNIT: ${{ inputs.log_junit }}
-      ACTION_TESTDOX_HTML: ${{ inputs.testdox_html }}
-      ACTION_TESTDOX_TEXT: ${{ inputs.testdox_text }}
-      ACTION_TESTDOX_XML: ${{ inputs.testdox_xml }}
-      ACTION_BOOTSTRAP: ${{ inputs.bootstrap }}
-      ACTION_FILTER: ${{ inputs.filter }}
-      ACTION_TESTSUITE: ${{ inputs.testsuite }}
-      ACTION_GROUP: ${{ inputs.group }}
-      ACTION_EXCLUDE_GROUP: ${{ inputs.exclude_group }}
-      ACTION_TEST_SUFFIX: ${{ inputs.test_suffix }}
-      ACTION_WHITELIST: ${{ inputs.whitelist }}
-      ACTION_MEMORY_LIMIT: ${{ inputs.memory_limit }}
-      ACTION_ARGS: ${{ inputs.args }}
-    id: phpunit_run
-      run: bash <(curl -s https://raw.githubusercontent.com/php-actions/php-build/master/php-build.bash) phpunit \
-        && ${{ github.action_path }}/composer-action.bash
-      shell: bash
+      - env:
+        ACTION_VERSION: ${{ inputs.version }}
+        ACTION_PHP_VERSION: ${{ inputs.php_version }}
+        ACTION_PHP_EXTENSIONS: ${{ inputs.php_extensions }}
+        ACTION_CONFIGURATION: ${{ inputs.configuration }}
+        ACTION_LOG_JUNIT: ${{ inputs.log_junit }}
+        ACTION_TESTDOX_HTML: ${{ inputs.testdox_html }}
+        ACTION_TESTDOX_TEXT: ${{ inputs.testdox_text }}
+        ACTION_TESTDOX_XML: ${{ inputs.testdox_xml }}
+        ACTION_BOOTSTRAP: ${{ inputs.bootstrap }}
+        ACTION_FILTER: ${{ inputs.filter }}
+        ACTION_TESTSUITE: ${{ inputs.testsuite }}
+        ACTION_GROUP: ${{ inputs.group }}
+        ACTION_EXCLUDE_GROUP: ${{ inputs.exclude_group }}
+        ACTION_TEST_SUFFIX: ${{ inputs.test_suffix }}
+        ACTION_WHITELIST: ${{ inputs.whitelist }}
+        ACTION_MEMORY_LIMIT: ${{ inputs.memory_limit }}
+        ACTION_ARGS: ${{ inputs.args }}
+      id: phpunit_run
+        run: bash <(curl -s https://raw.githubusercontent.com/php-actions/php-build/master/php-build.bash) phpunit \
+          && ${{ github.action_path }}/composer-action.bash
+        shell: bash
 
 branding:
   icon: 'check-square'
