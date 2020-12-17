@@ -9,6 +9,7 @@ if [ "$ACTION_VERSION" != "latest" ]
 then
 	phar_url="${phar_url}-${ACTION_VERSION}"
 fi
+phar_url="${phar_url}.phar"
 curl -H "User-agent: cURL (https://github.com/php-actions)" -L "$phar_url" > "${github_action_path}/phpunit.phar"
 chmod +x "${github_action_path}/phpunit.phar"
 
