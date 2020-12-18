@@ -2,7 +2,7 @@
 set -e
 github_action_path=$(dirname "$0")
 docker_tag=$(cat ./docker_tag)
-echo "Docker tag: $docker_tag"
+echo "Docker tag: $docker_tag" >> output.log 2>&1
 
 phar_url="https://phar.phpunit.de/phpunit"
 if [ "$ACTION_VERSION" != "latest" ]
@@ -10,7 +10,7 @@ then
 	phar_url="${phar_url}-${ACTION_VERSION}"
 fi
 phar_url="${phar_url}.phar"
-curl -H "User-agent: cURL (https://github.com/php-actions)" -L "$phar_url" > "${github_action_path}/phpunit.phar"
+curl --silent -H "User-agent: cURL (https://github.com/php-actions)" -L "$phar_url" > "${github_action_path}/phpunit.phar"
 chmod +x "${github_action_path}/phpunit.phar"
 
 command_string=("phpunit")
@@ -85,7 +85,7 @@ then
 	command_string+=("$ACTION_ARGS")
 fi
 
-echo "Command: " "${command_string[@]}"
+echo "Command: " "${command_string[@]}" >> output.log 2>&1
 docker run --rm \
 	--volume "${github_action_path}/phpunit.phar":/usr/local/bin/phpunit \
 	--volume "${GITHUB_WORKSPACE}":/app \
