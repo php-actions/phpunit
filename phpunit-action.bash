@@ -85,9 +85,9 @@ then
 	command_string+=("$ACTION_ARGS")
 fi
 
-echo "Command: " "${command_string[@]}"
+echo "Command: " "${command_string[*]}"
 docker run --rm \
 	--volume "${github_action_path}/phpunit.phar":/usr/local/bin/phpunit \
 	--volume "${GITHUB_WORKSPACE}":/app \
 	--workdir /app \
-	${docker_tag} "${command_string[@]}"
+	${docker_tag} ${command_string[*]}
