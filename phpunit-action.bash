@@ -82,7 +82,7 @@ fi
 
 if [ -n "$ACTION_ARGS" ]
 then
-	command_string+=("$ACTION_ARGS")
+	command_string+=($ACTION_ARGS)
 fi
 
 echo "Command: " "${command_string[@]}" >> output.log 2>&1
