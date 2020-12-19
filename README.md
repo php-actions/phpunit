@@ -63,7 +63,7 @@ jobs:
         memory_limit: 256M
 ```
 
-If you require other configurations of phpunit, please request them in the [Github issue tracker](https://github.com/php-actions/phpunit/issues)
+If you require other configurations of phpunit, please request them in the [Github issue tracker][issues]
 
 PHP and PHPUnit versions
 ------------------------
@@ -76,7 +76,7 @@ It's possible to run any version of PHPUnit under any version of PHP, with any P
 
 Please note the version number specified within your Action configuration must match your `composer.json` major version number. For example, if your composer.json requires `phpunit/phpunit 8.5.8`, you must use the `version: 8.5.8` input, as major versions of PHPUnit are incompatible with each other.
 
-If you require a specific version that is not compatible with Github Actions for some reason, please make a request in the [Github issue tracker](https://github.com/php-actions/phpunit/issues).
+If you require a specific version that is not compatible with Github Actions for some reason, please make a request in the [Github issue tracker][issues].
 
 Github Actions releases
 -----------------------
@@ -87,4 +87,6 @@ Previously, the Github Actions release version numbers were in sync with the PHP
 
 If you found this repository helpful, please consider [sponsoring the developer][sponsor].
 
+[issues]: https://github.com/php-actions/phpunit/issues
+[php-build]: https://github.com/php-actions/php-build
 [sponsor]: https://github.com/sponsors/g105b
