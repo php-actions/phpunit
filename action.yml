@@ -2,14 +2,18 @@ name: PHPUnit (php-actions)
 description: Run your PHPUnit tests in your Github Actions.
 
 inputs:
+  version:
+    description: What version of PHPUnit to use
+    default: latest
+    required: false
+
   php_version:
     description: What version of PHP to use
     default: latest
     required: false
 
-  phpunit_version:
-    description: What version of PHPUnit to use
-    default: latest
+  php_extensions:
+    description: Space separated list of extensions to configure with the PHP build
     required: false
 
   configuration:
@@ -74,25 +78,31 @@ inputs:
     required: false
 
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  env:
-    action_php_version: ${{ inputs.php_version }}
-    action_phpunit_version: ${{ inputs.phpunit_version }}
-    action_configuration: ${{ inputs.configuration }}
-    action_log_junit: ${{ inputs.log_junit }}
-    action_testdox_html: ${{ inputs.testdox_html }}
-    action_testdox_text: ${{ inputs.testdox_text }}
-    action_testdox_xml: ${{ inputs.testdox_xml }}
-    action_bootstrap: ${{ inputs.bootstrap }}
-    action_filter: ${{ inputs.filter }}
-    action_testsuite: ${{ inputs.testsuite }}
-    action_group: ${{ inputs.group }}
-    action_exclude_group: ${{ inputs.exclude_group }}
-    action_test_suffix: ${{ inputs.test_suffix }}
-    action_whitelist: ${{ inputs.whitelist }}
-    action_memory_limit: ${{ inputs.memory_limit }}
-    action_args: ${{ inputs.args }}
+  using: "composite"
+  steps:
+    - env:
+        ACTION_TOKEN: ${{ github.token }}
+        ACTION_VERSION: ${{ inputs.version }}
+        ACTION_PHP_VERSION: ${{ inputs.php_version }}
+        ACTION_PHP_EXTENSIONS: ${{ inputs.php_extensions }}
+        ACTION_CONFIGURATION: ${{ inputs.configuration }}
+        ACTION_LOG_JUNIT: ${{ inputs.log_junit }}
+        ACTION_TESTDOX_HTML: ${{ inputs.testdox_html }}
+        ACTION_TESTDOX_TEXT: ${{ inputs.testdox_text }}
+        ACTION_TESTDOX_XML: ${{ inputs.testdox_xml }}
+        ACTION_BOOTSTRAP: ${{ inputs.bootstrap }}
+        ACTION_FILTER: ${{ inputs.filter }}
+        ACTION_TESTSUITE: ${{ inputs.testsuite }}
+        ACTION_GROUP: ${{ inputs.group }}
+        ACTION_EXCLUDE_GROUP: ${{ inputs.exclude_group }}
+        ACTION_TEST_SUFFIX: ${{ inputs.test_suffix }}
+        ACTION_WHITELIST: ${{ inputs.whitelist }}
+        ACTION_MEMORY_LIMIT: ${{ inputs.memory_limit }}
+        ACTION_ARGS: ${{ inputs.args }}
+      id: phpunit_run
+      run: bash <(curl -s https://raw.githubusercontent.com/php-actions/php-build/cc563958b37b62874df04de865e5e9c6d8bb93dd/php-build.bash) phpunit \
+        && ${{ github.action_path }}/phpunit-action.bash
+      shell: bash
 
 branding:
   icon: 'check-square'
