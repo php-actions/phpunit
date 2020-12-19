@@ -38,13 +38,13 @@ Inputs
 
 The following configuration options are available:
 
++ `version` The version of PHPUnit to use e.g. `9` or `9.5.0` (default: latest)
++ `php_version` The version of PHP to use e.g. `7.4` (default: latest)
++ `php_extensions` Space-separated list of extensions using [php-build][php-build] e.g. `xdebug mbstring` (default: N/A)
 + `configuration` Path to the `phpunit.xml` file (default: `test/phpunit/phpunit.xml`)
 + `log_junit` Path to junit output file (default: `test/phpunit/_junit/junit.xml`)
 + `memory_limit` The memory limit to run your tests with (default: `512M`)
 + `bootstrap` The path to the bootstrap file (default: `vendor/autoload.php`)
-+ `version` The version of PHPUnit to use e.g. `9` or `9.5.0` (default: latest)
-+ `php_version` The version of PHP to use e.g. `7.4` (default: latest)
-+ `php_extensions` Space-separated list of extensions using [php-build][php-build] e.g. `xdebug mbstring` (default: N/A)
 
 The syntax for passing in a custom input is the following:
 
