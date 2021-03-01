@@ -19,7 +19,7 @@ inputs:
   configuration:
     description: Configuration file location
     required: false
-    
+
   log_junit:
     description: JUnit output file location
     required: false
@@ -39,11 +39,11 @@ inputs:
   testdox_xml:
     description: JUnit output file location
     required: false
-    
+
   memory_limit:
     description: Memory limit
     required: false
-    
+
   bootstrap:
     description: Path to bootstrap file
     required: false
@@ -100,7 +100,7 @@ runs:
         ACTION_MEMORY_LIMIT: ${{ inputs.memory_limit }}
         ACTION_ARGS: ${{ inputs.args }}
       id: phpunit_run
-      run: bash <(curl -s https://raw.githubusercontent.com/php-actions/php-build/41a2ecd3a2d7c5f53407c6d7cc580d1a2d6c7526/php-build.bash) phpunit \
+      run: bash <(curl -s https://raw.githubusercontent.com/php-actions/php-build/330b13bbb1eadd05bbb627477c1549cd7e62e406/php-build.bash) phpunit \
         && ${{ github.action_path }}/phpunit-action.bash || { cat ${{ github.workspace }}/output.log ; exit 1; }
       shell: bash
 
