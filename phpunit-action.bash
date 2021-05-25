@@ -90,5 +90,6 @@ docker run --rm \
 	--volume "${github_action_path}/phpunit.phar":/usr/local/bin/phpunit \
 	--volume "${GITHUB_WORKSPACE}":/app \
 	--workdir /app \
+	--network host \
 	--env-file <( env| cut -f1 -d= ) \
 	${docker_tag} "${command_string[@]}"
