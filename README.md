@@ -43,7 +43,7 @@ The following configuration options are available:
 + `php_extensions` Space-separated list of extensions using [php-build][php-build] e.g. `xdebug mbstring` (default: N/A)
 + `configuration` Path to the `phpunit.xml` file (default: `test/phpunit/phpunit.xml`)
 + `log_junit` Path to junit output file (default: `test/phpunit/_junit/junit.xml`)
-+ `memory_limit` The memory limit to run your tests with (default: `512M`)
++ `memory_limit` The memory limit to run your tests with (default: `128M`)
 + `bootstrap` The path to the bootstrap file (default: `vendor/autoload.php`)
 
 The syntax for passing in a custom input is the following:
