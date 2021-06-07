@@ -101,7 +101,7 @@ runs:
         ACTION_ARGS: ${{ inputs.args }}
       id: phpunit_run
       run: bash <(curl -s https://raw.githubusercontent.com/php-actions/php-build/330b13bbb1eadd05bbb627477c1549cd7e62e406/php-build.bash) phpunit \
-        && ${{ github.action_path }}/phpunit-action.bash || { cat ${{ github.workspace }}/output.log ; exit 1; }
+        && ${{ github.action_path }}/phpunit-action.bash || { echo "::group::Debug output" ; cat ${{ github.workspace }}/output.log ; echo "::endgroup::" ; exit 1; }
       shell: bash
 
 branding:
