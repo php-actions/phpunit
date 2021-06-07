@@ -24,9 +24,15 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: php-actions/composer@v5 # or alternative dependency management
-    - uses: php-actions/phpunit@v2
+    - uses: php-actions/phpunit@v3
     # ... then your own project steps ...
 ```
+
+### Version numbers
+
+This action is released with semantic version numbers, but also tagged so the latest major release's tag always points to the latest release within the matching major version.
+
+Please feel free to use `uses: php-actions/phpunit@v3` to always run the latest version of v3, or `uses: php-actions/phpunit@v3.0.0` to specify the exact release.
 
 Example
 -------
@@ -57,7 +63,7 @@ jobs:
     ...
 
     - name: PHPUnit tests
-      uses: php-actions/phpunit@v2
+      uses: php-actions/phpunit@v3
       with:
         configuration: custom/path/to/phpunit.xml
         memory_limit: 256M
