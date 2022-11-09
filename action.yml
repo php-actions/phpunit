@@ -1,4 +1,4 @@
-name: PHPUnit (php-actions)
+name: PHPUnit blackwolf12333
 description: Run your PHPUnit tests in your Github Actions.
 
 inputs:
@@ -14,6 +14,10 @@ inputs:
 
   php_extensions:
     description: Space separated list of extensions to configure with the PHP build
+    required: false
+
+  vendored_phpunit_path:
+    description: Path to a vendored phpunit binary
     required: false
 
   configuration:
@@ -85,6 +89,7 @@ runs:
         ACTION_VERSION: ${{ inputs.version }}
         ACTION_PHP_VERSION: ${{ inputs.php_version }}
         ACTION_PHP_EXTENSIONS: ${{ inputs.php_extensions }}
+        ACTION_PHPUNIT_PATH: ${{ inputs.vendored_phpunit_path }}
         ACTION_CONFIGURATION: ${{ inputs.configuration }}
         ACTION_LOG_JUNIT: ${{ inputs.log_junit }}
         ACTION_TESTDOX_HTML: ${{ inputs.testdox_html }}
