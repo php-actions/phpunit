@@ -1,4 +1,4 @@
-name: PHPUnit blackwolf12333
+name: PHPUnit (php-actions)
 description: Run your PHPUnit tests in your Github Actions.
 
 inputs:
