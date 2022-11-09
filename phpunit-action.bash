@@ -96,6 +96,7 @@ fi
 
 
 echo "Command: " "${command_string[@]}" >> output.log 2>&1
+
 docker run --rm \
 	--volume "${phar_path}":/usr/local/bin/phpunit \
 	--volume "${GITHUB_WORKSPACE}":/app \

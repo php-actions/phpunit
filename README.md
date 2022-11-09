@@ -22,8 +22,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - uses: php-actions/composer@v5 # or alternative dependency management
+    - uses: actions/checkout@v3
+    - uses: php-actions/composer@v6 # or alternative dependency management
     - uses: php-actions/phpunit@v3
     # ... then your own project steps ...
 ```
