@@ -3,7 +3,7 @@ set -e
 github_action_path=$(dirname "$0")
 docker_tag=$(cat ./docker_tag)
 
-echo "output_log=Docker tag: $docker_tag"
+echo "Docker tag: $docker_tag" >> output.log 2>&1
 
 if [ -z "$ACTION_PHPUNIT_PATH" ]
 then
@@ -13,16 +13,16 @@ then
 		phar_url="${phar_url}-${ACTION_VERSION}"
 	fi
 	phar_url="${phar_url}.phar"
-	echo "output_log=Using phar url $phar_url"
+	echo "Using phar url $phar_url" >> output.log 2>&1
 
 	phar_path="${github_action_path}/phpunit.phar"
 	curl -H "User-agent: cURL (https://github.com/php-actions)" -L "$phar_url" > "$phar_path"
 else
-	echo "output_log=Using vendored phpunit"
+	echo "Using vendored phpunit" >> output.log 2>&1
 	phar_path="${GITHUB_WORKSPACE}/$ACTION_PHPUNIT_PATH"
 fi
 
-echo "output_log=phar_path=$phar_path"
+echo "phar_path=$phar_path" >> output.log 2>&1
 chmod +x $phar_path
 command_string=("phpunit")
 
@@ -96,7 +96,7 @@ then
 	command_string+=($ACTION_ARGS)
 fi
 
-echo "output_log=Command: ${command_string[@]}"
+echo "Command: ${command_string[@]}" >> output.log 2>&1
 
 docker run --rm \
 	--volume "${phar_path}":/usr/local/bin/phpunit \
