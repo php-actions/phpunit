@@ -96,7 +96,7 @@ then
 	command_string+=($ACTION_ARGS)
 fi
 
-echo "output_log=Command: " "${command_string[@]}"
+echo "output_log=Command: ${command_string[@]}"
 
 docker run --rm \
 	--volume "${phar_path}":/usr/local/bin/phpunit \
