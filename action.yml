@@ -105,7 +105,7 @@ runs:
         ACTION_MEMORY_LIMIT: ${{ inputs.memory_limit }}
         ACTION_ARGS: ${{ inputs.args }}
       id: phpunit_run
-      run: bash <(curl -s https://raw.githubusercontent.com/php-actions/php-build/330b13bbb1eadd05bbb627477c1549cd7e62e406/php-build.bash) phpunit \
+      run: bash <(curl -s https://raw.githubusercontent.com/php-actions/php-build/cee5b9fa9fbc4c888e7a62bbb7b8eade18e3c56b/php-build.bash) phpunit \
         && ${{ github.action_path }}/phpunit-action.bash || { cat ${{ github.workspace }}/output.log >> $GITHUB_OUTPUT ; exit 1; }
       shell: bash
 
