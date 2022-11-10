@@ -6,7 +6,6 @@ echo "output_log=Docker tag: $docker_tag"
 
 if [ -z "$ACTION_PHPUNIT_PATH" ]
 then
-	echo "output_log=Using phar"
 	phar_url="https://phar.phpunit.de/phpunit"
 	if [ "$ACTION_VERSION" != "latest" ]
 	then
@@ -14,12 +13,12 @@ then
 	fi
 	phar_url="${phar_url}.phar"
 	echo "output_log=Using phar url $phar_url"
-	curl --silent -H "User-agent: cURL (https://github.com/php-actions)" -L "$phar_url" > "${github_action_path}/phpunit.phar"
 
 	phar_path="${github_action_path}/phpunit.phar"
+	curl -H "User-agent: cURL (https://github.com/php-actions)" -L "$phar_url" > "$phar_path"
 else
-	phar_path="${GITHUB_WORKSPACE}/$ACTION_PHPUNIT_PATH"
 	echo "output_log=Using vendored phpunit"
+	phar_path="${GITHUB_WORKSPACE}/$ACTION_PHPUNIT_PATH"
 fi
 
 echo "output_log=phar_path=$phar_path"
