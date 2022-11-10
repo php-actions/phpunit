@@ -14,7 +14,6 @@ then
 	fi
 	phar_url="${phar_url}.phar"
 	curl --silent -H "User-agent: cURL (https://github.com/php-actions)" -L "$phar_url" > "${github_action_path}/phpunit.phar"
-	chmod +x "${github_action_path}/phpunit.phar"
 
 	phar_path="${github_action_path}/phpunit.phar"
 else
@@ -22,6 +21,7 @@ else
 	echo "output_log=Using vendored phpunit: $phar_path"
 fi
 
+chmod +x "${github_action_path}/phpunit.phar"
 command_string=("phpunit")
 
 if [ -n "$ACTION_CONFIGURATION" ]
