@@ -4,7 +4,7 @@ github_action_path=$(dirname "$0")
 docker_tag=$(cat ./docker_tag)
 echo "output_log=Docker tag: $docker_tag"
 
-if [ -n "$ACTION_PHPUNIT_PATH" ]
+if [ -z "$ACTION_PHPUNIT_PATH" ]
 then
 	echo "output_log=Using phar"
 	phar_url="https://phar.phpunit.de/phpunit"
