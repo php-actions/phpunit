@@ -2,6 +2,7 @@
 set -e
 github_action_path=$(dirname "$0")
 docker_tag=$(cat ./docker_tag)
+
 echo "output_log=Docker tag: $docker_tag"
 
 if [ -z "$ACTION_PHPUNIT_PATH" ]
