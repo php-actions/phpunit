@@ -2,11 +2,11 @@
 set -e
 github_action_path=$(dirname "$0")
 docker_tag=$(cat ./docker_tag)
-echo "Docker tag: $docker_tag" >> output.log 2>&1
+echo "output_log=Docker tag: $docker_tag"
 
 if [ -n "$ACTION_PHPUNIT_PATH" ]
 then
-	echo "Using phar" >> output.log 2>&1
+	echo "output_log=Using phar"
 	phar_url="https://phar.phpunit.de/phpunit"
 	if [ "$ACTION_VERSION" != "latest" ]
 	then
@@ -19,7 +19,7 @@ then
 	phar_path="${github_action_path}/phpunit.phar"
 else
 	phar_path="${GITHUB_WORKSPACE}/$ACTION_PHPUNIT_PATH"
-	echo "Using vendored phpunit: $phar_path" >> output.log 2>&1
+	echo "output_log=Using vendored phpunit: $phar_path"
 fi
 
 command_string=("phpunit")
@@ -94,8 +94,7 @@ then
 	command_string+=($ACTION_ARGS)
 fi
 
-
-echo "Command: " "${command_string[@]}" >> output.log 2>&1
+echo "output_log=Command: " "${command_string[@]}"
 
 docker run --rm \
 	--volume "${phar_path}":/usr/local/bin/phpunit \
