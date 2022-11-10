@@ -111,6 +111,7 @@ runs:
         echo "text<<EOF" >> $GITHUB_OUTPUT
         ${{ github.action_path }}/phpunit-action.bash >> $GITHUB_OUTPUT
         echo "EOF" >> $GITHUB_OUTPUT
+        cat $GITHUB_OUTPUT
       shell: bash
 
 branding:
