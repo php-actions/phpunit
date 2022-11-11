@@ -91,6 +91,8 @@ then
 	command_string+=(-d memory_limit="$ACTION_MEMORY_LIMIT")
 fi
 
+command_string+=(--colors=always)
+
 if [ -n "$ACTION_ARGS" ]
 then
 	command_string+=($ACTION_ARGS)
