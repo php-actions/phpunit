@@ -16,7 +16,7 @@ then
 	echo "Using phar url $phar_url" >> output.log 2>&1
 
 	phar_path="${github_action_path}/phpunit.phar"
-	curl -H "User-agent: cURL (https://github.com/php-actions)" -L "$phar_url" > "$phar_path"
+	curl --silent -H "User-agent: cURL (https://github.com/php-actions)" -L "$phar_url" > "$phar_path"
 else
 	echo "Using vendored phpunit" >> output.log 2>&1
 	phar_path="${GITHUB_WORKSPACE}/$ACTION_PHPUNIT_PATH"
