@@ -49,9 +49,19 @@ The following configuration options are available:
 + `php_extensions` Space-separated list of extensions using [php-build][php-build] e.g. `xdebug mbstring` (default: N/A)
 + `vendored_phpunit_path` The path to a phar file already present on the runner (default: N/A)
 + `configuration` Path to the `phpunit.xml` file (default: `test/phpunit/phpunit.xml`)
-+ `log_junit` Path to junit output file (default: `test/phpunit/_junit/junit.xml`)
++ `log_junit` Log test execution in JUnit XML format to file
++ `log_teamcity` Log test execution in TeamCity format to file 
++ `testdox_html` Write documentation in HTML format to file
++ `testdox_text` Write documentation in Text format to file
 + `memory_limit` The memory limit to run your tests with (default: `128M`)
 + `bootstrap` The path to the bootstrap file
++ `filter` Filter which tests to run
++ `testsuite` Specify a testsuite to run
++ `group` Only runs tests from the specified group(s)
++ `exclude_group` Exclude tests from the specified group(s)
++ `test_suffix` Only search for test in files with specified suffix(es)
++ `whitelist` Path to directory to whitelist for code coverage analysis
++ `args` Extra arguments to pass to the phpunit binary
 
 The syntax for passing in a custom input is the following:
 
