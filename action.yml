@@ -33,15 +33,11 @@ inputs:
     required: false
 
   testdox_html:
-    description: JUnit output file location
+    description: Write documentation in HTML format to file
     required: false
 
   testdox_text:
-    description: JUnit output file location
-    required: false
-
-  testdox_xml:
-    description: JUnit output file location
+    description: Write documentation in Text format to file
     required: false
 
   memory_limit:
@@ -77,6 +73,34 @@ inputs:
     description: Path to directory to whitelist for code coverage analysis
     required: false
 
+  coverage_clover:
+    description: Generate code coverage report in Clover XML format
+    required: false
+
+  coverage_cobertura:
+    description: Generate code coverage report in Cobertura XML format
+    required: false
+
+  coverage_crap4j:
+    description: Generate code coverage report in Crap4J XML format
+    required: false
+
+  coverage_html:
+    description: Generate code coverage report in HTML format
+    required: false
+
+  coverage_php:
+    description: Export PHP_CodeCoverage object to file
+    required: false
+
+  coverage_text:
+    description: Generate code coverage report in text format (true to output to console, path to output to file)
+    required: false
+
+  coverage_xml:
+    description: Generate code coverage report in PHPUnit XML format
+    required: false
+
   args:
     description: Extra arguments to pass to the phpunit binary
     required: false
@@ -94,7 +118,6 @@ runs:
         ACTION_LOG_JUNIT: ${{ inputs.log_junit }}
         ACTION_TESTDOX_HTML: ${{ inputs.testdox_html }}
         ACTION_TESTDOX_TEXT: ${{ inputs.testdox_text }}
-        ACTION_TESTDOX_XML: ${{ inputs.testdox_xml }}
         ACTION_BOOTSTRAP: ${{ inputs.bootstrap }}
         ACTION_FILTER: ${{ inputs.filter }}
         ACTION_TESTSUITE: ${{ inputs.testsuite }}
@@ -103,6 +126,13 @@ runs:
         ACTION_TEST_SUFFIX: ${{ inputs.test_suffix }}
         ACTION_WHITELIST: ${{ inputs.whitelist }}
         ACTION_MEMORY_LIMIT: ${{ inputs.memory_limit }}
+        ACTION_COVERAGE_CLOVER: ${{ inputs.coverage_clover }}
+        ACTION_COVERAGE_COBERTURA: ${{ inputs.coverage_cobertura }}
+        ACTION_COVERAGE_CRAP4J: ${{ inputs.coverage_crap4j }}
+        ACTION_COVERAGE_HTML: ${{ inputs.coverage_html }}
+        ACTION_COVERAGE_PHP: ${{ inputs.coverage_php }}
+        ACTION_COVERAGE_TEXT: ${{ inputs.coverage_text }}
+        ACTION_COVERAGE_XML: ${{ inputs.coverage_xml }}
         ACTION_ARGS: ${{ inputs.args }}
       id: phpunit_run
       run: |
