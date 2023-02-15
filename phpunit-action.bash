@@ -88,7 +88,7 @@ fi
 
 if [ -n "$ACTION_COVERAGE_CLOVER" ]
 then
-	command_string+=(--coverage--clover "$ACTION_COVERAGE_CLOVER")
+	command_string+=(--coverage-clover "$ACTION_COVERAGE_CLOVER")
 fi
 
 if [ -n "$ACTION_COVERAGE_COBERTURA" ]
