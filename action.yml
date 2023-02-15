@@ -134,6 +134,7 @@ runs:
         ACTION_COVERAGE_TEXT: ${{ inputs.coverage_text }}
         ACTION_COVERAGE_XML: ${{ inputs.coverage_xml }}
         ACTION_ARGS: ${{ inputs.args }}
+
       id: phpunit_run
       run: |
         set -e
