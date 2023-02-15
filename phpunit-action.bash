@@ -117,7 +117,7 @@ then
 	then
 		command_string+=(--coverage-text)
 	else
-		command_string+=(--coverage-text "$ACTION_COVERAGE_TEXT")
+		command_string+=(--coverage-text="$ACTION_COVERAGE_TEXT")
 	fi
 fi
 
