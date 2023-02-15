@@ -46,11 +46,6 @@ then
 	command_string+=(--testdox-text "$ACTION_TESTDOX_TEXT")
 fi
 
-if [ -n "$ACTION_TESTDOX_XML" ]
-then
-	command_string+=(--testdox-xml "$ACTION_TESTDOX_XML")
-fi
-
 if [ -n "$ACTION_BOOTSTRAP" ]
 then
 	command_string+=(--bootstrap "$ACTION_BOOTSTRAP")
@@ -89,6 +84,46 @@ fi
 if [ -n "$ACTION_MEMORY_LIMIT" ]
 then
 	command_string+=(-d memory_limit="$ACTION_MEMORY_LIMIT")
+fi
+
+if [ -n "$ACTION_COVERAGE_CLOVER" ]
+then
+	command_string+=(--coverage-clover "$ACTION_COVERAGE_CLOVER")
+fi
+
+if [ -n "$ACTION_COVERAGE_COBERTURA" ]
+then
+	command_string+=(--coverage-cobertura "$ACTION_COVERAGE_COBERTURA")
+fi
+
+if [ -n "$ACTION_COVERAGE_CRAP4J" ]
+then
+	command_string+=(--coverage-crap4j "$ACTION_COVERAGE_CRAP4J")
+fi
+
+if [ -n "$ACTION_COVERAGE_HTML" ]
+then
+	command_string+=(--coverage-html "$ACTION_COVERAGE_HTML")
+fi
+
+if [ -n "$ACTION_COVERAGE_PHP" ]
+then
+	command_string+=(--coverage-php "$ACTION_COVERAGE_PHP")
+fi
+
+if [ -n "$ACTION_COVERAGE_TEXT" ]
+then
+	if [ "${ACTION_COVERAGE_TEXT,,}" = "true" ]
+	then
+		command_string+=(--coverage-text)
+	else
+		command_string+=(--coverage-text="$ACTION_COVERAGE_TEXT")
+	fi
+fi
+
+if [ -n "$ACTION_COVERAGE_XML" ]
+then
+	command_string+=(--coverage-xml "$ACTION_COVERAGE_XML")
 fi
 
 command_string+=(--colors=always)

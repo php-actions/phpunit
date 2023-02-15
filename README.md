@@ -49,9 +49,27 @@ The following configuration options are available:
 + `php_extensions` Space-separated list of extensions using [php-build][php-build] e.g. `xdebug mbstring` (default: N/A)
 + `vendored_phpunit_path` The path to a phar file already present on the runner (default: N/A)
 + `configuration` Path to the `phpunit.xml` file (default: `test/phpunit/phpunit.xml`)
-+ `log_junit` Path to junit output file (default: `test/phpunit/_junit/junit.xml`)
++ `log_junit` Log test execution in JUnit XML format to file
++ `log_teamcity` Log test execution in TeamCity format to file 
++ `testdox_html` Write documentation in HTML format to file
++ `testdox_text` Write documentation in Text format to file
 + `memory_limit` The memory limit to run your tests with (default: `128M`)
 + `bootstrap` The path to the bootstrap file
++ `filter` Filter which tests to run
++ `testsuite` Specify a testsuite to run
++ `group` Only runs tests from the specified group(s)
++ `exclude_group` Exclude tests from the specified group(s)
++ `test_suffix` Only search for test in files with specified suffix(es)
++ `whitelist` Path to directory to whitelist for code coverage analysis
++ `coverage_clover` Generate code coverage report in Clover XML format
++ `coverage_cobertura` Generate code coverage report in Cobertura XML format
+  required
++ `coverage_crap4j` Generate code coverage report in Crap4J XML format
++ `coverage_html` Generate code coverage report in HTML format
++ `coverage_php` Export PHP_CodeCoverage object to file
++ `coverage_text` Generate code coverage report in text format (true to output to console, path to output to file)
++ `coverage_xml` Generate code coverage report in PHPUnit XML format
++ `args` Extra arguments to pass to the phpunit binary
 
 The syntax for passing in a custom input is the following:
 
@@ -66,8 +84,8 @@ jobs:
     - name: PHPUnit tests
       uses: php-actions/phpunit@v3
       with:
-        configuration: custom/path/to/phpunit.xml
-        memory_limit: 256M
+        configuration: "custom/path/to/phpunit.xml"
+        memory_limit: "256M"
 ```
 
 If you require other configurations of phpunit, please request them in the [Github issue tracker][issues]
@@ -85,6 +103,30 @@ Please note the version number specified within your Action configuration must m
 
 If you require a specific version that is not compatible with Github Actions for some reason, please make a request in the [Github issue tracker][issues].
 
+Coverage
+--------
+
+To store the code coverage, use the `coverage_*` input that is appropriate for your needs. Coverage information is made possible by using the xdebug extension, which will be required to be added to the `php_extensions` input to work.
+
+Example:
+
+```yaml
+jobs:
+  unit-tests:
+
+    ...
+
+    - name: PHPUnit tests
+      uses: php-actions/phpunit@v3
+      with:
+        php_extensions: "xdebug"
+        coverage_clover: "coverage/clover.xml"
+```
+
+The above example will output coverage information to the terminal. Pass a file path to output to a file.
+
+If you want to report coverage information somewhere, please see the [code-coverage] action.
+
 Github Actions releases
 -----------------------
 
@@ -96,4 +138,5 @@ If you found this repository helpful, please consider [sponsoring the developer]
 
 [issues]: https://github.com/php-actions/phpunit/issues
 [php-build]: https://github.com/php-actions/php-build
+[code-coverage]: https://github.com/php-actions/code-coverage
 [sponsor]: https://github.com/sponsors/g105b
