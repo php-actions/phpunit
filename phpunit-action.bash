@@ -23,7 +23,12 @@ else
 fi
 
 echo "phar_path=$phar_path" >> output.log 2>&1
-chmod +x $phar_path
+
+if [[ ! -x "$phar_path" ]]
+then
+	chmod +x "$phar_path" || echo "Error: the PHAR must have executable bit set" && exit 1
+fi
+
 command_string=("phpunit")
 
 if [ -n "$ACTION_CONFIGURATION" ]
