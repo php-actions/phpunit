@@ -5,9 +5,28 @@ docker_tag=$(cat ./docker_tag)
 
 echo "Docker tag: $docker_tag" >> output.log 2>&1
 
+function get_version_from_composer() {
+	version_string="*"
+
+	if [ -f composer.lock ]
+	then
+		version_string=$(jq -r 'first(.["packages-dev"][]?, .packages[]? | select(.name == "phpunit/phpunit") | .version)' composer.lock)
+	else
+		version_string=$(jq '.["require-dev"]["phpunit/phpunit"] // .["require"]["phpunit/phpunit"]' composer.json)
+		version_string=$(echo "$version_string" | sed -E 's/^[^0-9]*//')
+	fi
+
+	echo $version_string
+}
+
 if [ -z "$ACTION_PHPUNIT_PATH" ]
 then
 	phar_url="https://phar.phpunit.de/phpunit"
+	if [ "$ACTION_VERSION" == "composer" ]
+	then
+		ACTION_VERSION=$(get_version_from_composer)
+	fi
+
 	if [ "$ACTION_VERSION" != "latest" ]
 	then
 		phar_url="${phar_url}-${ACTION_VERSION}"

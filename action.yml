@@ -4,7 +4,7 @@ description: Run your PHPUnit tests in your Github Actions.
 inputs:
   version:
     description: What version of PHPUnit to use
-    default: latest
+    default: composer
     required: false
 
   php_version:
