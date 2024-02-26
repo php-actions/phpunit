@@ -73,6 +73,10 @@ inputs:
     description: Path to directory to whitelist for code coverage analysis
     required: false
 
+  coverage_filter:
+    description: Include directory in code coverage reporting
+    required: false
+
   coverage_clover:
     description: Generate code coverage report in Clover XML format
     required: false
@@ -126,6 +130,7 @@ runs:
         ACTION_TEST_SUFFIX: ${{ inputs.test_suffix }}
         ACTION_WHITELIST: ${{ inputs.whitelist }}
         ACTION_MEMORY_LIMIT: ${{ inputs.memory_limit }}
+        ACTION_COVERAGE_FILTER: ${{ inputs.coverage_filter }}
         ACTION_COVERAGE_CLOVER: ${{ inputs.coverage_clover }}
         ACTION_COVERAGE_COBERTURA: ${{ inputs.coverage_cobertura }}
         ACTION_COVERAGE_CRAP4J: ${{ inputs.coverage_crap4j }}
