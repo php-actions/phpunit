@@ -86,6 +86,12 @@ then
 	command_string+=(-d memory_limit="$ACTION_MEMORY_LIMIT")
 fi
 
+if [ -n "$ACTION_COVERAGE_FILTER" ]
+then
+	command_string+=(--coverage-filter "$ACTION_COVERAGE_FILTER")
+	export XDEBUG_MODE=coverage
+fi
+
 if [ -n "$ACTION_COVERAGE_CLOVER" ]
 then
 	command_string+=(--coverage-clover "$ACTION_COVERAGE_CLOVER")

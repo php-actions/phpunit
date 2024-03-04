@@ -60,7 +60,8 @@ The following configuration options are available:
 + `group` Only runs tests from the specified group(s)
 + `exclude_group` Exclude tests from the specified group(s)
 + `test_suffix` Only search for test in files with specified suffix(es)
-+ `whitelist` Path to directory to whitelist for code coverage analysis
++ `whitelist` Path to directory to whitelist for code coverage analysis (phpunit <= 8)
++ `coverage_filter` Include directory in code coverage reporting (phpunit >= 9)
 + `coverage_clover` Generate code coverage report in Clover XML format
 + `coverage_cobertura` Generate code coverage report in Cobertura XML format
   required
