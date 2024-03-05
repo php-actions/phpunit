@@ -44,7 +44,7 @@ Inputs
 
 The following configuration options are available:
 
-+ `version` The version of PHPUnit to use e.g. `9` or `9.5.0` (default: latest)
++ `version` The version of PHPUnit to use e.g. `latest`, `9` or `9.5.0` (default: `composer` - use the version specified in composer.json)
 + `php_version` The version of PHP to use e.g. `7.4` (default: latest)
 + `php_extensions` Space-separated list of extensions using [php-build][php-build] e.g. `xdebug mbstring` (default: N/A)
 + `vendored_phpunit_path` The path to a phar file already present on the runner (default: N/A)
@@ -96,7 +96,7 @@ PHP and PHPUnit versions
 
 It's possible to run any version of PHPUnit under any version of PHP, with any PHP extensions you require. This is configured with the following inputs:
 
-+ `version` - the version number of PHPUnit to run e.g. `9` or `9.5.0` (default: latest)
++ `version` - the version number of PHPUnit to run e.g. `latest`, `9` or `9.5.0` (default: `composer`). Using the default value, `composer` will install the version specified in `composer.json`
 + `php_version` - the version number of PHP to use e.g. `7.4` (default: latest)
 + `php_extensions` - a space-separated list of extensions to install using [php-build][php-build] e.g. `xdebug mbstring` (default: N/A)
 
