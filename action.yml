@@ -67,7 +67,6 @@ inputs:
   test_suffix:
     description: Only search for test in files with specified suffix(es)
     required: false
-    default: Test.php,.phpt
 
   whitelist:
     description: Path to directory to whitelist for code coverage analysis
