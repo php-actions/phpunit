@@ -35,15 +35,26 @@ then
 	echo "Using phar url $phar_url" >> output.log 2>&1
 
 	phar_path="${github_action_path}/phpunit.phar"
+	command_string=("phpunit")
 	curl --silent -H "User-agent: cURL (https://github.com/php-actions)" -L "$phar_url" > "$phar_path"
 else
-	echo "Using vendored phpunit" >> output.log 2>&1
+	echo "Using vendored phpunit: ${phar_path}" >> output.log 2>&1
 	phar_path="${GITHUB_WORKSPACE}/$ACTION_PHPUNIT_PATH"
+	command_string=($ACTION_PHPUNIT_PATH)
+fi
+
+if [ ! -f "${phar_path}" ]
+then
+	echo "Error: The phpunit binary \"${phar_path}\" does not exist in the project"
+	exit 1
 fi
 
 echo "phar_path=$phar_path" >> output.log 2>&1
-chmod +x $phar_path
-command_string=("phpunit")
+
+if [[ ! -x "$phar_path" ]]
+then
+	chmod +x $phar_path || echo "Error: the PHAR must have executable bit set" && exit 1
+fi
 
 if [ -n "$ACTION_CONFIGURATION" ]
 then
@@ -163,12 +174,20 @@ echo "Command: ${command_string[@]}" >> output.log 2>&1
 me=$(whoami)
 echo "Current user: $me"
 
-ls -la
-
-docker run --rm \
-	--volume "${phar_path}":/usr/local/bin/phpunit \
-	--volume "${GITHUB_WORKSPACE}":/app \
-	--workdir /app \
-	--network host \
-	--env-file <( env| cut -f1 -d= ) \
-	${docker_tag} "${command_string[@]}"
+if [ -z $ACTION_PHPUNIT_PATH ]
+then
+	docker run --rm \
+		--volume "${phar_path}":/usr/local/bin/phpunit \
+		--volume "${GITHUB_WORKSPACE}":/app \
+		--workdir /app \
+		--network host \
+		--env-file <( env| cut -f1 -d= ) \
+		${docker_tag} "${command_string[@]}"
+else
+	docker run --rm \
+		--volume "${GITHUB_WORKSPACE}":/app \
+		--workdir /app \
+		--network host \
+		--env-file <( env| cut -f1 -d= ) \
+		${docker_tag} "/app/${command_string[@]}"
+fi
