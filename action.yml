@@ -104,6 +104,10 @@ inputs:
     description: Generate code coverage report in PHPUnit XML format
     required: false
 
+  colors:
+    description: Use colors in output ("never", "auto" or "always")
+    default: auto
+
   args:
     description: Extra arguments to pass to the phpunit binary
     required: false
@@ -137,6 +141,7 @@ runs:
         ACTION_COVERAGE_PHP: ${{ inputs.coverage_php }}
         ACTION_COVERAGE_TEXT: ${{ inputs.coverage_text }}
         ACTION_COVERAGE_XML: ${{ inputs.coverage_xml }}
+        ACTION_COLORS: ${{ inputs.colors }}
         ACTION_ARGS: ${{ inputs.args }}
 
       id: phpunit_run
