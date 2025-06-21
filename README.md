@@ -22,17 +22,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - uses: php-actions/composer@v6 # or alternative dependency management
-    - uses: php-actions/phpunit@v3
+    - uses: php-actions/phpunit@v4
     # ... then your own project steps ...
 ```
 
 ### Version numbers
 
-This action is released with semantic version numbers, but also tagged so the latest major release's tag always points to the latest release within the matching major version.
+GitHub have changed to an auto-tagging model, where the release will be made as vX.Y.Z and an automatic tag is created called vX, so there will be no more proxy releases for the latest version number.
 
-Please feel free to use `uses: php-actions/phpunit@v3` to always run the latest version of v3, or `uses: php-actions/phpunit@v3.0.0` to specify the exact release.
+Please use `uses: php-actions/phpunit@v4` to always run the latest version of v4.
 
 Example
 -------
@@ -83,7 +83,7 @@ jobs:
     ...
 
     - name: PHPUnit tests
-      uses: php-actions/phpunit@v3
+      uses: php-actions/phpunit@v4
       with:
         configuration: "custom/path/to/phpunit.xml"
         memory_limit: "256M"
@@ -118,7 +118,7 @@ jobs:
     ...
 
     - name: PHPUnit tests
-      uses: php-actions/phpunit@v3
+      uses: php-actions/phpunit@v4
       with:
         php_extensions: "xdebug"
         coverage_clover: "coverage/clover.xml"
