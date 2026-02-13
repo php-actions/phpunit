@@ -170,5 +170,5 @@ docker run --rm \
 	--volume "${GITHUB_WORKSPACE}":/app \
 	--workdir /app \
 	--network host \
-	--env-file <( env| cut -f1 -d= ) \
+	--env-file <(env | grep '=' | cut -f1 -d=) \
 	${docker_tag} "${command_string[@]}"
