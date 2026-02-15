@@ -151,7 +151,10 @@ then
 	command_string+=(--coverage-xml "$ACTION_COVERAGE_XML")
 fi
 
-command_string+=(--colors=always)
+if [ -=n "$ACTION_COLORS" ]
+then
+	command_string+=(--colors=$ACTION_COLORS)
+fi
 
 if [ -n "$ACTION_ARGS" ]
 then
